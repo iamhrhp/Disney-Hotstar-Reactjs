@@ -12,7 +12,7 @@ const SeriesPage: FC<IProps> = (props: IProps) => {
   const { classes } = props;
   return (
     <Box className={classes.wrapperBox}>
-      <MovieByGenre tv={true} Genre="Drama" />
+      <MovieByGenre tv={true} Genre="Popular" />
       {/* <MovieByGenre Genre="Animation" />
       <MovieByGenre Genre="Adventure" />
       <MovieByGenre Genre="Comedy" />

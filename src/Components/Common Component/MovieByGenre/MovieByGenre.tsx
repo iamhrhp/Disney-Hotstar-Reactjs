@@ -58,19 +58,20 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${movieId}/`
       );
       const resJson = await res.data;
-      console.log('resJson', resJson);
-
       setCurrData(resJson.results);
-      if (movies.length <= 0) {
-        dispatch(ADD_MOVIES(resJson.results));
-      }
+
+      // if (movies.length <= 0) {
+      //   dispatch(ADD_MOVIES(resJson.results));
+      // }
+
+      dispatch(ADD_MOVIES(resJson.results));
     } catch (e) {
       console.log('e', e);
     }
   };
 
   const navigateToViewAllPage = () => {
-    navigate(`/${Genre}-MoviesList`, { state: { Genre } });
+    navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
   };
 
   //fetching the key url and navigate to media player page

@@ -85,7 +85,7 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
           // display: state ? 'block' : 'none',
         }}
       >
-        {state.Genre} Movies
+        {state.Genre} {state.tv === true ? 'Shows' : 'Movies'}
       </Typography>
 
       <Box

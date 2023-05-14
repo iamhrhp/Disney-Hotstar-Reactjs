@@ -10,27 +10,6 @@ const initialState: MovieState = {
   watchLater: [],
 };
 
-export const DataReducer: any = (state = initialState, action: any) => {
-  console.log(action.payload);
-  switch (action.type) {
-    case 'ADD_MOVIES':
-      return { ...state, movies: [...state.movies, ...action.payload] };
-    // case 'WATCH_LATER':
-    //   return { ...state, watchLater: [...state.watchLater, action.payload] };
-    // case 'DELETE_WATCH_LATER':
-    //   return {
-    //     ...state,
-    //     watchLater: state.watchLater.filter(
-    //       (movie: any) => movie.url !== action.payload
-    //     ),
-    //   };
-    default:
-      return {
-        ...state,
-      };
-  }
-};
-
 const moviesSlice: any = createSlice({
   name: 'movies',
   initialState,
