@@ -17,6 +17,7 @@ import HoverCardPage from '../Hover Card/HoverCardPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddMovies } from '../../Utils/redux/actions/actions';
 import { ADD_MOVIES } from '../../Utils/redux/reducer/reducer';
+import errorImg from '../../../images/404/404.jpg';
 
 interface IProps {
   classes?: any;
@@ -26,6 +27,7 @@ interface IProps {
 }
 
 const MovieByGenre: FC<IProps> = (props: IProps) => {
+  const [currData, setCurrData] = useState<any[]>([]);
   const { classes, Genre, tv } = props;
 
   const navigate = useNavigate();
@@ -51,10 +53,14 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   const getMovieData = async () => {
     try {
       const res = await axios(
-        `${baseURL}/3/discover/tv/api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&page=1&vote_average.gte=6&with_genres=${movieId}`
+        `${baseURL}/3/discover/${tv ? 'tv' : 'movie'}?api_key=${
+          process.env.REACT_APP_API_KEY
+        }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${movieId}/`
       );
       const resJson = await res.data;
       console.log('resJson', resJson);
+
+      setCurrData(resJson.results);
       if (movies.length <= 0) {
         dispatch(ADD_MOVIES(resJson.results));
       }
@@ -92,7 +98,9 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         className={classes.wrapperBtn}
         onClick={() => navigateToViewAllPage()}
       >
-        <Button className={classes.GenreBtn}>{Genre} Movies</Button>
+        <Button className={classes.GenreBtn}>
+          {Genre} {tv ? 'Shows' : 'Movies'}
+        </Button>
         <Button className={classes.viewAllBtn}>View All</Button>
       </Box>
       <Swiper
@@ -102,8 +110,8 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         modules={[Navigation]}
         className="mySwiper"
       >
-        {movies?.map((item: any, index: number) => {
-          // console.log('---movie----', item.length);
+        {currData?.map((item: any, index: number) => {
+          console.log('---movie----', item);
           return (
             <React.Fragment key={index}>
               <SwiperSlide>
@@ -113,7 +121,11 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
                     src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   />
                   <HoverCardPage
-                    Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                    Image={
+                      item.backdrop_path === null
+                        ? errorImg
+                        : `http://image.tmdb.org/t/p/w500/${item.backdrop_path}`
+                    }
                     Genre={Genre}
                     ReleaseDate={item.release_date}
                     Overview={item.overview}

@@ -7,7 +7,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 interface IProps {
   classes?: any;
   NavigateToMediaPlayer?: (event: React.MouseEvent<HTMLElement>) => void;
-  Image?: string;
+  Image?: any;
   Genre?: string;
   ReleaseDate: string;
   Overview?: string;

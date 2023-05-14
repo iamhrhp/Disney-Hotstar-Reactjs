@@ -34,7 +34,7 @@ const MovieCard: FC<IProps> = (props: IProps) => {
 
   const handleNavigatePlayer = () => {
     const { navigate, url, Title } = props;
-    console.log('----------', url);
+    // console.log('----------', url);
     navigate(`/${Title}-MoviesPlayer`, { state: url });
   };
 
@@ -96,7 +96,7 @@ const MovieCard: FC<IProps> = (props: IProps) => {
   // console.log('-------------watchlter', watchLater);
 
   const movieData = watchLater?.map((movie: any) => movie.url);
-  console.log('-------------movieData', movieData);
+  // console.log('-------------movieData', movieData);
 
   return (
     <>
