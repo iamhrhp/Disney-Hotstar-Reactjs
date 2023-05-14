@@ -1,0 +1,57 @@
+.PhoneInput {
+  margin: 0;
+}
+
+.PhoneInputInput {
+  font-size: 18px;
+  padding: 18px;
+  border-radius: 6px;
+  background: #000000;
+  border: 1px solid #8f98b2;
+  color: #8f98b2;
+}
+
+.PhoneInputCountry {
+  display: none;
+}
+.mapImg {
+  width: 100% !important;
+  border-radius: 8px;
+}
+.mapBox {
+  width: 13% !important;
+  margin: 1% 0.2%;
+  position: relative;
+}
+.mapBox:hover .hoverCard {
+  display: block;
+}
+
+.mapBox:hover .sliderImg {
+  display: none;
+}
+.css-ahj2mt-MuiTypography-root {
+  max-height: 35px !important;
+  overflow: hidden;
+}
+
+.hoverCard {
+  display: none;
+  transition: all 0.2s ease-in-out;
+  background: #000000;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: 0px 36px 42px 13px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  width: 180%;
+  /* right: 35%;
+  top: -42%;
+  position: relative; */
+  position: absolute;
+  top: -30px;
+  transition: all 0.2s ease-in-out;
+}
+.hoverCard:hover {
+  scale: 1.02;
+  transition: all 0.2s ease-in-out;
+}

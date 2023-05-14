@@ -1,0 +1,52 @@
+.thumb {
+  height: 50px;
+}
+
+.carousel .thumb {
+  border: none;
+  border-radius: 10px;
+}
+.carousel .thumb:hover {
+  border: none;
+}
+.carousel .thumb.selected {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 0;
+  height: 50px;
+}
+.carousel .thumbs-wrapper {
+  margin: 0px;
+}
+
+.carousel .thumb img {
+  height: 50px !important;
+}
+
+.carousel {
+  margin-top: -12%;
+  text-align: end;
+  margin-left: 55%;
+  width: 45%;
+}
+
+@media screen and (max-width: 900px) {
+  .carousel {
+    margin-top: -15%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .carousel {
+    margin-top: -20%;
+  }
+}
+@media screen and (max-width: 440px) {
+  .carousel {
+    margin-top: -24%;
+  }
+}
+@media screen and (max-width: 370px) {
+  .carousel {
+    margin-top: -30%;
+  }
+}

@@ -1,0 +1,81 @@
+.swiper-slide {
+  width: 15% !important;
+  height: auto !important;
+}
+
+img {
+  height: auto !important;
+  width: 100%;
+}
+
+.swiper-button-prev {
+  color: #ffffff;
+}
+
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.swiper-button-next {
+  color: #ffffff;
+}
+.swiper-button-next::after {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.hoverCard {
+  display: none;
+  transition: all 0.2s ease-in-out;
+  background: #000000;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: 1px 1px 26px -5px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  width: 170%;
+  right: -70px;
+}
+
+.hoverCard:hover {
+  scale: 1.02;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .hoverCard {
+    right: -50px;
+  }
+}
+@media (max-width: 700px) {
+  .hoverCard {
+    right: -40px;
+  }
+}
+@media (max-width: 600px) {
+  .hoverCard {
+    right: -29px;
+  }
+}
+@media (max-width: 430px) {
+  .hoverCard {
+    right: -20px;
+  }
+}
+.sliderImg {
+  border-radius: 10px;
+}
+
+.sliderBox {
+  position: relative;
+}
+
+.sliderBox:hover .hoverCard {
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+.sliderBox:hover .sliderImg {
+  display: none;
+  transition: all 0.2s ease-in-out;
+}

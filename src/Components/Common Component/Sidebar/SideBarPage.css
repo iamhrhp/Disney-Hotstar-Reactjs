@@ -1,0 +1,110 @@
+.sidebar-boxwrapper {
+  display: flex;
+  background: #000000;
+  width: 100%;
+}
+
+/* .sidebar-boxwrapper .css-0 {
+  height: fit-content;
+} */
+
+/* .sidebar-mainbox {
+  width: 5%;
+} */
+
+.sidebarBox {
+  /* width: 50px; */
+  background: #000000;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebarBox:hover {
+  width: 150px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 10px 10px 193px 173px rgba(0, 0, 0, 0.75);
+  position: absolute;
+}
+
+.sidebar-mapBefore {
+  position: fixed;
+  top: 30%;
+}
+
+.sidebar-mapBefore:hover .titleButton {
+  display: block !important ;
+  transition: all 0.2s ease-in-out;
+}
+
+.titleButton {
+  display: none !important;
+  color: #8f98b2 !important;
+  font-size: 14px;
+  font-weight: 550 !important;
+  font-family: 'Inter', sans-serif !important;
+  text-transform: capitalize !important;
+  text-align: start;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-mapAfter {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.icon1 {
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon2 {
+  margin-right: 10px;
+  display: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-mapAfter:hover .icon1 {
+  display: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-mapAfter:hover .icon2 {
+  display: block !important;
+  margin-left: 5px;
+  color: #ffffff !important;
+  scale: 1.2;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar-mapAfter:hover .titleButton {
+  display: block !important;
+  margin-left: 5px;
+  color: #ffffff !important;
+  scale: 1.2;
+  transition: all 0.2s ease-in-out;
+}
+
+.iconBtn {
+  color: #8f98b2 !important;
+  text-transform: capitalize;
+}
+
+.children-prop {
+  width: 95%;
+  z-index: 0;
+}
+
+@media screen and(max-width:600px) {
+  .sidebar-mainbox {
+    width: 10% !important;
+  }
+  .children-prop {
+    width: 90% !important;
+  }
+}
+
+.SidebarPage-sidebarMainbox-2 + .css-0 {
+  height: fit-content;
+}
