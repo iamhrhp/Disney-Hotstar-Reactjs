@@ -1,4 +1,4 @@
-import { Component, FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { Box, Button, CardMedia, Typography } from '@mui/material';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import AddIcon from '@mui/icons-material/Add';
@@ -6,7 +6,7 @@ import { withStyles } from '@mui/styles';
 import { MovieCardStyles } from './MovieCard.Styles';
 import { withRouter } from '../../Utils/WithRouter';
 import DoneIcon from '@mui/icons-material/Done';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { WATCH_LATER } from '../../Utils/redux/reducer/reducer';
 import toast, { Toaster } from 'react-hot-toast';

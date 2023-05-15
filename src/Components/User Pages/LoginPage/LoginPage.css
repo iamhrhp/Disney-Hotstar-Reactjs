@@ -47,9 +47,7 @@
   /* right: 35%;
   top: -42%;
   position: relative; */
-  position: absolute;
   top: -30px;
-  transition: all 0.2s ease-in-out;
 }
 .hoverCard:hover {
   scale: 1.02;
