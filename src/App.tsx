@@ -13,9 +13,9 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <PersistGate loading={null} persistor={persistor}>
-          <RoutesPageMain />
-        </PersistGate>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+        <RoutesPageMain />
+        {/* </PersistGate> */}
       </ThemeProvider>
     </Provider>
   );

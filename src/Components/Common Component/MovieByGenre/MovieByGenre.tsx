@@ -33,7 +33,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { movies } = useSelector((state: any) => state.moviesSlice);
+  const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
 
   console.log('currentMovies', movies);
 
@@ -63,8 +63,9 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
       // if (movies.length <= 0) {
       //   dispatch(ADD_MOVIES(resJson.results));
       // }
-
-      dispatch(ADD_MOVIES(resJson.results));
+      if (tvSeries.length <= 0) {
+        dispatch(ADD_MOVIES(resJson.results));
+      }
     } catch (e) {
       console.log('e', e);
     }
@@ -111,7 +112,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         modules={[Navigation]}
         className="mySwiper"
       >
-        {currData?.map((item: any, index: number) => {
+        {currData?.map((item: any, index = Date.now()) => {
           console.log('---movie----', item);
           return (
             <React.Fragment key={index}>

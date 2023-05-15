@@ -37,7 +37,8 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
 
   const navigate = useNavigate();
 
-  const { movies } = useSelector((state: any) => state.moviesSlice);
+  const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
+
   console.log('currmovies viewAllpage', movies);
 
   // const test = useSelector((state: any) => state);

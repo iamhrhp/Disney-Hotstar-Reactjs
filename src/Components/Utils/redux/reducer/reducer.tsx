@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface MovieState {
   movies: any[];
+  tvSeries: any[];
   watchLater: any[];
 }
 
 const initialState: MovieState = {
   movies: [],
+  tvSeries: [],
   watchLater: [],
 };
 
@@ -16,7 +18,11 @@ const moviesSlice: any = createSlice({
   reducers: {
     ADD_MOVIES: (state, action) => {
       console.log('sliceAction', action.payload);
-      return { ...state, movies: [...state.movies, ...action.payload] };
+      return { ...state, movies: [state.movies, ...action.payload] };
+    },
+    ADD_TV: (state, action) => {
+      console.log('sliceAction', action.payload);
+      return { ...state, tvSeries: [state.tvSeries, ...action.payload] };
     },
     WATCH_LATER: (state, action) => {
       return { ...state, watchLater: [...state.watchLater, action.payload] };
