@@ -44,9 +44,6 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
   console.log('viewAllpage tvSeries', tvSeries);
   console.log('viewAllpage satet tv', state.tv);
 
-  // const test = useSelector((state: any) => state);
-  // console.log('test viewAllpage', test);
-
   const handleNavigatePlayer = async (movieData: any) => {
     let videoKey;
     try {

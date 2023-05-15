@@ -241,7 +241,7 @@ export const LoginPageStyle: any = (theme: any) => ({
     display: 'flex',
     flexDirection: 'column !important',
     justifyContent: 'space-between',
-    marginTop: '300px',
+    marginTop: '32%',
   },
   GenreBtn: {
     marginLeft: '25px',

@@ -230,7 +230,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
                   </Typography>
                   <Box className={classes.modalInputBox}>
                     <TextField
-                      placeholder="Enter mobile number"
+                      placeholder="Enter otp"
                       value={otp}
                       onChange={(e) => setOtp(e.target.value)}
                       // onChange={handleChange}
@@ -283,38 +283,46 @@ const LoginPage: FC<IProps> = (props: IProps) => {
             </Box>
           </Modal>
         </Box>
-        <Box className={classes.watchLaterListBox}>
-          {watchLater.length > 0 ? (
-            <Box
-              className={classes.wrapperBtn}
-              // onClick={() => navigateToViewAllPage()}
-            >
-              <Button className={classes.GenreBtn}>Watchlist</Button>
-              {/* <Button className={classes.viewAllBtn}>View All</Button> */}
-            </Box>
-          ) : null}
+        {currNumber !== '' ? (
+          <Box className={classes.watchLaterListBox}>
+            {watchLater.length > 0 ? (
+              <Box
+                className={classes.wrapperBtn}
+                // onClick={() => navigateToViewAllPage()}
+              >
+                <Button className={classes.GenreBtn}>Watchlist</Button>
+                {/* <Button className={classes.viewAllBtn}>View All</Button> */}
+              </Box>
+            ) : null}
 
-          <Box sx={{ display: 'flex' }}>
-            {watchLater?.map((movie: any, i = Date.now()) => {
-              return (
-                <Box className="mapBox" key={i} sx={{ marginRight: '10px' }}>
-                  <CardMedia
-                    className="mapImg"
-                    component="img"
-                    src={movie.poster}
-                  />
-                  <HoverCardPage
-                    Image={movie.Image}
-                    Genre={movie.Genre}
-                    ReleaseDate={movie.MovieYear}
-                    Overview={movie.Description}
-                    // NavigateToMediaPlayer={() => handleNavigatePlayer(movie)}
-                  />
-                </Box>
-              );
-            })}
+            <Box sx={{ display: 'flex' }}>
+              {currNumber !== ''
+                ? watchLater?.map((movie: any, i = Date.now()) => {
+                    return (
+                      <Box
+                        className="mapBox"
+                        key={i}
+                        sx={{ marginRight: '10px' }}
+                      >
+                        <CardMedia
+                          className="mapImg"
+                          component="img"
+                          src={movie.poster}
+                        />
+                        <HoverCardPage
+                          Image={movie.Image}
+                          Genre={movie.Genre}
+                          ReleaseDate={movie.MovieYear}
+                          Overview={movie.Description}
+                          // NavigateToMediaPlayer={() => handleNavigatePlayer(movie)}
+                        />
+                      </Box>
+                    );
+                  })
+                : null}
+            </Box>
           </Box>
-        </Box>
+        ) : null}
         <Toaster />
       </Box>
     </React.Fragment>
