@@ -21,3 +21,70 @@ export const moviesGenreId = [
   { title: 'War', id: 10752 },
   { title: 'Western', id: 37 },
 ];
+
+export const tvGenreId = [
+  {
+    id: 10759,
+    title: 'Action',
+  },
+  {
+    id: 16,
+    title: 'Animation',
+  },
+  {
+    id: 35,
+    title: 'Comedy',
+  },
+  {
+    id: 80,
+    title: 'Crime',
+  },
+  {
+    id: 99,
+    title: 'Documentary',
+  },
+  {
+    id: 18,
+    title: 'Drama',
+  },
+  {
+    id: 10751,
+    title: 'Family',
+  },
+  {
+    id: 10762,
+    title: 'Kids',
+  },
+  {
+    id: 9648,
+    title: 'Mystery',
+  },
+  {
+    id: 10763,
+    title: 'News',
+  },
+  {
+    id: 10764,
+    title: 'Reality',
+  },
+  {
+    id: 10765,
+    title: 'Science',
+  },
+  {
+    id: 10766,
+    title: 'Soap',
+  },
+  {
+    id: 10767,
+    title: 'Talk',
+  },
+  {
+    id: 10768,
+    title: 'Politics',
+  },
+  {
+    id: 37,
+    title: 'Western',
+  },
+];

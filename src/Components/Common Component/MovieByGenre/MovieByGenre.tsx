@@ -35,10 +35,10 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
 
   const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
 
-  console.log('movies', movies);
-  console.log('tvSeries', tvSeries);
+  // console.log('movies', movies);
+  // console.log('tvSeries', tvSeries);
   console.log('tv', tv);
-  console.log('currData', currData);
+  // console.log('currData', currData);
 
   // const test = useSelector((state: any) => state);
   // console.log('test movieBygenre', test);
@@ -52,13 +52,26 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
     })
     .map((item) => item.id);
 
+  const tvId = moviesGenreId
+    .filter((item) => {
+      if (item.title === Genre) {
+        return item.id;
+      }
+    })
+    .map((item) => item.id);
+
+  console.log('movieId', movieId);
+  console.log('tvId', tvId);
+
   //api call for getting popular movies data
   const getMovieData = async () => {
     try {
       const res = await axios(
         `${baseURL}/3/discover/${tv ? 'tv' : 'movie'}?api_key=${
           process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${movieId}/`
+        }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${
+          tv ? tvId : movieId
+        }`
       );
       const resJson = await res.data;
       setCurrData(resJson.results);
