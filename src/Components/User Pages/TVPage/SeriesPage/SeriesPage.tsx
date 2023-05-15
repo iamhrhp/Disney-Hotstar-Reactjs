@@ -14,12 +14,12 @@ const SeriesPage: FC<IProps> = (props: IProps) => {
     <Box className={classes.wrapperBox}>
       <MovieByGenre tv={true} Genre="Family" />
       <MovieByGenre tv={true} Genre="Animation" />
-      {/* <MovieByGenre tv={true} Genre="Kids" />
+      <MovieByGenre tv={true} Genre="Kids" />
       <MovieByGenre tv={true} Genre="Comedy" />
       <MovieByGenre tv={true} Genre="Western" />
-      <MovieByGenre tv={true} Genre="Drama" />
+      {/* <MovieByGenre tv={true} Genre="Drama" /> */}
       <MovieByGenre tv={true} Genre="Crime" />
-      <MovieByGenre tv={true} Genre="Documentary" /> */}
+      {/* <MovieByGenre tv={true} Genre="Documentary" /> */}
     </Box>
   );
 };

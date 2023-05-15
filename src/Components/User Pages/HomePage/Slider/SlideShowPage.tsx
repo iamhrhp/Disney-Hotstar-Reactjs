@@ -10,6 +10,7 @@ import { MovieDetails } from '../../../Data/MovieDetails/MovieDetails';
 import LinearProgress from '@mui/material/LinearProgress';
 import { connect } from 'react-redux';
 import { DELETE_WATCH_LATER } from '../../../Utils/redux/reducer/reducer';
+import { Toaster, toast } from 'react-hot-toast';
 
 interface IProps {
   classes?: any;
@@ -80,6 +81,7 @@ class SlideShowPage extends Component<IProps, IState> {
             );
           })}
         </Carousel>
+        <Toaster />
       </>
     );
   }

@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import HoverCardPage from '../Hover Card/HoverCardPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { AddMovies } from '../../Utils/redux/actions/actions';
 import { ADD_MOVIES, ADD_TV } from '../../Utils/redux/reducer/reducer';
 import errorImg from '../../../images/404/404.jpg';
 

@@ -9,6 +9,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
 import { WATCH_LATER } from '../../Utils/redux/reducer/reducer';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface IProps {
   classes?: any;
@@ -34,17 +35,18 @@ const MovieCard: FC<IProps> = (props: IProps) => {
 
   const handleNavigatePlayer = () => {
     const { navigate, url, Title } = props;
-    // console.log('----------', url);
     navigate(`/${Title}-MoviesPlayer`, { state: url });
   };
 
   const dispatch = useDispatch();
 
-  const { watchLater } = useSelector((state: any) => state.moviesSlice);
+  const { watchLater, userNumber } = useSelector(
+    (state: any) => state.moviesSlice
+  );
 
   // const test = useSelector((state: any) => state);
 
-  // console.log('testwatchlater', test);
+  console.log('userNumber', userNumber);
 
   const handleWatch = () => {
     if (watch === false) {
@@ -84,13 +86,9 @@ const MovieCard: FC<IProps> = (props: IProps) => {
       Genre: Genre,
       url: url,
     };
-    // if (this.props.watchLater.length <= 0) {
-    //@ts-ignore
-    dispatch(
-      //@ts-ignore
-      WATCH_LATER(obj)
-    );
-    // }
+    userNumber === ''
+      ? toast.error('Please Sign in')
+      : dispatch(WATCH_LATER(obj));
   };
 
   // console.log('-------------watchlter', watchLater);
@@ -129,6 +127,12 @@ const MovieCard: FC<IProps> = (props: IProps) => {
               />
             )}
           </Button>
+        </Box>
+        <Box
+          className="toast"
+          sx={{ zIndex: '9999', position: 'absolute', top: '10%' }}
+        >
+          <Toaster />
         </Box>
       </Box>
     </>

@@ -6,7 +6,7 @@ export const LoginPageStyle: any = (theme: any) => ({
     textAlign: 'center',
     background: '#000000 !important',
     position: 'relative',
-    top: '40%',
+    // top: '40%',
   },
   loginTitle: {
     color: '#ffffff !important',
@@ -225,9 +225,9 @@ export const LoginPageStyle: any = (theme: any) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'absolute',
-    top: '20px',
+    position: 'relative',
     width: '95%',
+    marginTop: '1rem',
     [theme.breakpoints.down('sm')]: {
       width: '90%',
     },
@@ -241,7 +241,7 @@ export const LoginPageStyle: any = (theme: any) => ({
     display: 'flex',
     flexDirection: 'column !important',
     justifyContent: 'space-between',
-    marginTop: '32%',
+    marginTop: '20%',
   },
   GenreBtn: {
     marginLeft: '25px',
