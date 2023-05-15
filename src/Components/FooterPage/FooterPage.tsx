@@ -69,10 +69,14 @@ class FooterPage extends Component<FooterPageProps, FooterPageState> {
                 </Typography>
                 <Box className={classes.socialImageBoxWrapper}>
                   <Box className={classes.socialImageBox}>
-                    <img className={classes.socialImg} src={fb} />
+                    <img className={classes.socialImg} alt="img" src={fb} />
                   </Box>
                   <Box className={classes.socialImageBox2}>
-                    <img className={classes.socialImg} src={twitter} />
+                    <img
+                      className={classes.socialImg}
+                      alt="img"
+                      src={twitter}
+                    />
                   </Box>
                 </Box>
               </Box>
