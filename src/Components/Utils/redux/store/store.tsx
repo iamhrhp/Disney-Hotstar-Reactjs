@@ -9,7 +9,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  // DataReducer: DataReducer,
   moviesSlice: reducer,
 });
 
