@@ -37,8 +37,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
 
   console.log('movies', movies);
   console.log('tvSeries', tvSeries);
-  console.log('tv', tv);
-  console.log('currData', currData);
+  // console.log('currData', currData);
 
   // const test = useSelector((state: any) => state);
   // console.log('test movieBygenre', test);
@@ -52,29 +51,44 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
     })
     .map((item) => item.id);
 
+  const tvId = moviesGenreId
+    .filter((item) => {
+      if (item.title === Genre) {
+        return item.id;
+      }
+    })
+    .map((item) => item.id);
+
   //api call for getting popular movies data
   const getMovieData = async () => {
     try {
       const res = await axios(
         `${baseURL}/3/discover/${tv ? 'tv' : 'movie'}?api_key=${
           process.env.REACT_APP_API_KEY
-        }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${movieId}/`
+        }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${
+          tv ? tvId : movieId
+        }`
       );
       const resJson = await res.data;
       setCurrData(resJson.results);
-      console.log('resJson', resJson.results);
+      // console.log('resJson', resJson.results);
     } catch (e) {
       console.log('e', e);
     }
   };
 
   const navigateToViewAllPage = () => {
-    navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
-    if (tvSeries.length <= 0 && tv === true) {
+    // if (tvSeries.length <= 0 && tv === true) {
+    //   dispatch(ADD_TV(currData));
+    // } else if (movies.length <= 0 && !tv) {
+    //   dispatch(ADD_MOVIES(currData));
+    // }
+    if (tv === true) {
       dispatch(ADD_TV(currData));
-    } else if (movies.length <= 0 && !tv) {
+    } else if (!tv) {
       dispatch(ADD_MOVIES(currData));
     }
+    navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
   };
 
   //fetching the key url and navigate to media player page

@@ -78,7 +78,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
       // singIn handler---------------------
       return signInWithPhoneNumber(auth, phonenumber, recaptchaVerifier)
         .then((confirmationResult) => {
-          console.log('--------', confirmationResult);
+          // console.log('--------', confirmationResult);
           setVerificationId(confirmationResult.verificationId);
           toast.success('OTP sent successfully');
         })

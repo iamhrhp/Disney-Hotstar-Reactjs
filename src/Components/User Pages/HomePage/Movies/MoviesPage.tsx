@@ -13,8 +13,8 @@ const MoviesPage: FC<IProps> = (props: IProps) => {
   return (
     <Box className={classes.wrapperBox}>
       <MovieByGenre Genre="Action" />
-      {/* <MovieByGenre Genre="Animation" />
-      <MovieByGenre Genre="Adventure" />
+      <MovieByGenre Genre="Animation" />
+      {/* <MovieByGenre Genre="Adventure" />
       <MovieByGenre Genre="Comedy" />
       <MovieByGenre Genre="Horror" />
       <MovieByGenre Genre="Drama" />
