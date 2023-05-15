@@ -19,11 +19,9 @@ import {
   signInWithPhoneNumber,
   signOut,
 } from 'firebase/auth';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import './LoginPage.css';
@@ -106,10 +104,9 @@ const LoginPage: FC<IProps> = (props: IProps) => {
 
   // otp handler-------------------------
   const handleOtp = async (event: any) => {
-    new PhoneAuthProvider(auth);
     if (event.key === 'Enter') {
       try {
-        const authCredential = await PhoneAuthProvider.credential(
+        const authCredential = PhoneAuthProvider.credential(
           verificationId,
           otp
         );

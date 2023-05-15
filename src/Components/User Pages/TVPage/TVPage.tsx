@@ -6,7 +6,8 @@ import MovieCard from '../../Common Component/Movie Card/MovieCard';
 import { withStyles } from '@mui/styles';
 import { TVPageStyle } from './TVPage.Style';
 import { Carousel } from 'react-responsive-carousel';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { DELETE_WATCH_LATER } from '../../Utils/redux/reducer/reducer';
 
 interface IProps {
   classes: any;

@@ -1,5 +1,5 @@
 import { Box, Button } from '@mui/material';
-import { useState, FC, useEffect } from 'react';
+import React, { useState, FC, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -12,9 +12,8 @@ import { withStyles } from '@mui/styles';
 import { MoviesPagesStyle } from '../../User Pages/HomePage/Movies/MoviesPages.Style';
 import { moviesGenreId } from '../../Data/MoviesGenreId';
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
 import HoverCardPage from '../Hover Card/HoverCardPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ADD_MOVIES, ADD_TV } from '../../Utils/redux/reducer/reducer';
 import errorImg from '../../../images/404/404.jpg';
 
@@ -32,10 +31,10 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
+  // const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
 
-  console.log('movies', movies);
-  console.log('tvSeries', tvSeries);
+  // console.log('movies', movies);
+  // console.log('tvSeries', tvSeries);
   // console.log('currData', currData);
 
   // const test = useSelector((state: any) => state);
