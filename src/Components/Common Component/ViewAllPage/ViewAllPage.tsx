@@ -8,6 +8,8 @@ import './ViewAllPage.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { useSelector } from 'react-redux';
 
+import errorImg from '../../../images/404/404.jpg';
+
 interface IProps {
   classes?: any;
 }
@@ -28,7 +30,7 @@ interface NavigateDataProps {
   vote_average: number;
   vote_count: number;
 }
-
+let currData: any;
 const ViewAllPage: FC<IProps> = (props: IProps) => {
   const [isLoading, SetIsLoading] = useState<boolean>(false);
   const { state } = useLocation();
@@ -38,8 +40,9 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
   const navigate = useNavigate();
 
   const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
-
-  console.log('currmovies viewAllpage', movies);
+  console.log('viewAllpage movies', movies);
+  console.log('viewAllpage tvSeries', tvSeries);
+  console.log('viewAllpage satet tv', state.tv);
 
   // const test = useSelector((state: any) => state);
   // console.log('test viewAllpage', test);
@@ -62,6 +65,10 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
     setTimeout(() => {
       SetIsLoading(true);
     }, 1000);
+  }, []);
+
+  useEffect(() => {
+    currData = state.tv === true ? tvSeries : movies;
   }, []);
 
   return (
@@ -99,19 +106,23 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
           marginTop: '5%',
         }}
       >
-        {movies.map((item: NavigateDataProps, index = Date.now()) => {
+        {currData?.map((item: NavigateDataProps, index = Date.now()) => {
           return (
             <Box key={index} className="mapBox">
               <CardMedia
                 className="mapImg"
                 component="img"
-                src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
               />
               <HoverCardPage
-                Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                Image={
+                  item?.backdrop_path === null
+                    ? errorImg
+                    : `http://image.tmdb.org/t/p/w500/${item?.backdrop_path}`
+                }
                 Genre={state.Genre}
-                ReleaseDate={item.release_date}
-                Overview={item.overview}
+                ReleaseDate={item?.release_date}
+                Overview={item?.overview}
                 NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
               />
             </Box>

@@ -16,7 +16,7 @@ import React from 'react';
 import HoverCardPage from '../Hover Card/HoverCardPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddMovies } from '../../Utils/redux/actions/actions';
-import { ADD_MOVIES } from '../../Utils/redux/reducer/reducer';
+import { ADD_MOVIES, ADD_TV } from '../../Utils/redux/reducer/reducer';
 import errorImg from '../../../images/404/404.jpg';
 
 interface IProps {
@@ -35,10 +35,13 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
 
   const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
 
-  console.log('currentMovies', movies);
+  console.log('movies', movies);
+  console.log('tvSeries', tvSeries);
+  console.log('tv', tv);
+  console.log('currData', currData);
 
-  const test = useSelector((state: any) => state);
-  console.log('test movieBygenre', test);
+  // const test = useSelector((state: any) => state);
+  // console.log('test movieBygenre', test);
 
   //converting props genre to api genre id
   const movieId = moviesGenreId
@@ -59,13 +62,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
       );
       const resJson = await res.data;
       setCurrData(resJson.results);
-
-      // if (movies.length <= 0) {
-      //   dispatch(ADD_MOVIES(resJson.results));
-      // }
-      if (tvSeries.length <= 0) {
-        dispatch(ADD_MOVIES(resJson.results));
-      }
+      console.log('resJson', resJson.results);
     } catch (e) {
       console.log('e', e);
     }
@@ -73,6 +70,11 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
 
   const navigateToViewAllPage = () => {
     navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
+    if (tvSeries.length <= 0 && tv === true) {
+      dispatch(ADD_TV(currData));
+    } else if (movies.length <= 0 && !tv) {
+      dispatch(ADD_MOVIES(currData));
+    }
   };
 
   //fetching the key url and navigate to media player page
@@ -113,7 +115,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         className="mySwiper"
       >
         {currData?.map((item: any, index = Date.now()) => {
-          console.log('---movie----', item);
+          // console.log('---movie----', item);
           return (
             <React.Fragment key={index}>
               <SwiperSlide>
