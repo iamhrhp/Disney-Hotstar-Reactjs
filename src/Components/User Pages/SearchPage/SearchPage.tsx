@@ -53,7 +53,7 @@ const SearchPage: FC<IProps> = (props: IProps) => {
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
-      console.log(searchText);
+      // console.log(searchText);
       try {
         const res = await axios(
           `${baseURL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=1&include_adult=false`

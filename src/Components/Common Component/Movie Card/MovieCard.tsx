@@ -46,7 +46,7 @@ const MovieCard: FC<IProps> = (props: IProps) => {
 
   // const test = useSelector((state: any) => state);
 
-  console.log('userNumber', userNumber);
+  // console.log('userNumber', userNumber);
 
   const handleWatch = () => {
     if (watch === false) {
