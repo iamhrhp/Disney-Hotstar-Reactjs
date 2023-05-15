@@ -134,6 +134,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
                 <Box className="sliderBox">
                   <img
                     className="sliderImg"
+                    alt="img"
                     src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   />
                   <HoverCardPage

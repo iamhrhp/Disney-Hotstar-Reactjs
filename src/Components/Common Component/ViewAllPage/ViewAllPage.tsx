@@ -31,7 +31,7 @@ interface NavigateDataProps {
   vote_average: number;
   vote_count: number;
 }
-let currData: any;
+
 const ViewAllPage: FC<IProps> = (props: IProps) => {
   const [isLoading, SetIsLoading] = useState<boolean>(false);
   const { state } = useLocation();
@@ -65,9 +65,7 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    currData = state.tv === true ? tvSeries : movies;
-  }, []);
+  let currData = state.tv === true ? tvSeries : movies;
 
   return (
     <Box
