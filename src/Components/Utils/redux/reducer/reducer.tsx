@@ -4,12 +4,14 @@ export interface MovieState {
   movies: any[];
   tvSeries: any[];
   watchLater: any[];
+  userNumber: string;
 }
 
 const initialState: MovieState = {
   movies: [],
   tvSeries: [],
   watchLater: [],
+  userNumber: '',
 };
 
 const moviesSlice: any = createSlice({
@@ -35,9 +37,22 @@ const moviesSlice: any = createSlice({
         ),
       };
     },
+    ADD_USER_NUMBER: (state, action) => {
+      return { ...state, userNumber: action.payload };
+    },
+    DELETE_USER_NUMBER: (state, action) => {
+      return { ...state, userNumber: action.payload };
+    },
   },
 });
 
 const { actions, reducer } = moviesSlice;
-export const { ADD_MOVIES, ADD_TV, WATCH_LATER, DELETE_WATCH_LATER } = actions;
+export const {
+  ADD_MOVIES,
+  ADD_TV,
+  WATCH_LATER,
+  DELETE_WATCH_LATER,
+  ADD_USER_NUMBER,
+  DELETE_USER_NUMBER,
+} = actions;
 export default reducer;

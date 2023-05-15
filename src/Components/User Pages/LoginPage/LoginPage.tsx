@@ -27,9 +27,13 @@ import { Navigation } from 'swiper';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import './LoginPage.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import HoverCardPage from '../../Common Component/Hover Card/HoverCardPage';
 import LinearProgress from '@mui/material/LinearProgress';
+import {
+  ADD_USER_NUMBER,
+  DELETE_USER_NUMBER,
+} from '../../Utils/redux/reducer/reducer';
 
 interface IProps {
   classes?: any;
@@ -48,7 +52,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { classes } = props;
-
+  const dispatch = useDispatch();
   const handleChange = (value: undefined) => {
     if (value) {
       setPhonenumber(value);
@@ -93,6 +97,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setCurrNumber(user.phoneNumber);
+        dispatch(ADD_USER_NUMBER(user.phoneNumber));
       } else {
         setCurrNumber('');
       }
@@ -125,6 +130,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
     signOut(auth)
       .then(() => {
         toast.success('Sign out Successful!');
+        dispatch(DELETE_USER_NUMBER(''));
       })
       .catch((error) => {
         toast.success('An error happened.!');
@@ -138,7 +144,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
 
         <Box className={classes.mainWrapper}>
           {currNumber === '' ? (
-            <Box>
+            <Box sx={{ position: 'relative', top: '20rem' }}>
               <Typography className={classes.loginTitle}>
                 Login to Disney+ Hotstar
               </Typography>
