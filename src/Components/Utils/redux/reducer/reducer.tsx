@@ -17,11 +17,11 @@ const moviesSlice: any = createSlice({
   initialState,
   reducers: {
     ADD_MOVIES: (state, action) => {
-      console.log('sliceAction', action.payload);
+      // console.log('sliceAction', action.payload);
       return { ...state, movies: action.payload };
     },
     ADD_TV: (state, action) => {
-      console.log('sliceAction', action.payload);
+      // console.log('sliceAction', action.payload);
       return { ...state, tvSeries: action.payload };
     },
     WATCH_LATER: (state, action) => {
