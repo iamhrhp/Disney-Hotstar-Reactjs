@@ -35,9 +35,8 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
 
   const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
 
-  // console.log('movies', movies);
-  // console.log('tvSeries', tvSeries);
-  console.log('tv', tv);
+  console.log('movies', movies);
+  console.log('tvSeries', tvSeries);
   // console.log('currData', currData);
 
   // const test = useSelector((state: any) => state);
@@ -60,9 +59,6 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
     })
     .map((item) => item.id);
 
-  console.log('movieId', movieId);
-  console.log('tvId', tvId);
-
   //api call for getting popular movies data
   const getMovieData = async () => {
     try {
@@ -82,12 +78,17 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   };
 
   const navigateToViewAllPage = () => {
-    navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
-    if (tvSeries.length <= 0 && tv === true) {
+    // if (tvSeries.length <= 0 && tv === true) {
+    //   dispatch(ADD_TV(currData));
+    // } else if (movies.length <= 0 && !tv) {
+    //   dispatch(ADD_MOVIES(currData));
+    // }
+    if (tv === true) {
       dispatch(ADD_TV(currData));
-    } else if (movies.length <= 0 && !tv) {
+    } else if (!tv) {
       dispatch(ADD_MOVIES(currData));
     }
+    navigate(`/${Genre}-MoviesList`, { state: { Genre, tv } });
   };
 
   //fetching the key url and navigate to media player page
