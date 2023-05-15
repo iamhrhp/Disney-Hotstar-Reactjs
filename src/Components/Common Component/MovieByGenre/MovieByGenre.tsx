@@ -71,7 +71,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
       );
       const resJson = await res.data;
       setCurrData(resJson.results);
-      console.log('resJson', resJson.results);
+      // console.log('resJson', resJson.results);
     } catch (e) {
       console.log('e', e);
     }

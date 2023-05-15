@@ -9,6 +9,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { useSelector } from 'react-redux';
 
 import errorImg from '../../../images/404/404.jpg';
+import CircularLoading from '../../Utils/CircularLoading/CircularLoading';
 
 interface IProps {
   classes?: any;
@@ -35,14 +36,14 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
   const [isLoading, SetIsLoading] = useState<boolean>(false);
   const { state } = useLocation();
 
-  console.log('state', state);
+  // console.log('state', state);
 
   const navigate = useNavigate();
 
   const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
-  console.log('viewAllpage movies', movies);
-  console.log('viewAllpage tvSeries', tvSeries);
-  console.log('viewAllpage satet tv', state.tv);
+  // console.log('viewAllpage movies', movies);
+  // console.log('viewAllpage tvSeries', tvSeries);
+  // console.log('viewAllpage satet tv', state.tv);
 
   const handleNavigatePlayer = async (movieData: any) => {
     let videoKey;
@@ -73,6 +74,7 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
       sx={{
         backgroundColor: '#000000 !important',
         height: '100%',
+        marginBottom: '5%',
       }}
     >
       {!isLoading ? <LinearProgress /> : null}
@@ -93,39 +95,52 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
         {state.Genre} {state.tv === true ? 'Shows' : 'Movies'}
       </Typography>
 
-      <Box
-        sx={{
-          display: 'flex !important',
-          flexDirection: 'row !important',
-          flexWrap: 'wrap',
-          width: '90%',
-          margin: 'auto',
-          marginTop: '5%',
-        }}
-      >
-        {currData?.map((item: NavigateDataProps, index = Date.now()) => {
-          return (
-            <Box key={index} className="mapBox">
-              <CardMedia
-                className="mapImg"
-                component="img"
-                src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
-              />
-              <HoverCardPage
-                Image={
-                  item?.backdrop_path === null
-                    ? errorImg
-                    : `http://image.tmdb.org/t/p/w500/${item?.backdrop_path}`
-                }
-                Genre={state.Genre}
-                ReleaseDate={item?.release_date}
-                Overview={item?.overview}
-                NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
-              />
-            </Box>
-          );
-        })}
-      </Box>
+      {!isLoading ? (
+        <Box
+          sx={{
+            margin: 'auto',
+            width: '10%',
+            height: '40vh',
+            marginTop: '15%',
+          }}
+        >
+          <CircularLoading />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            display: 'flex !important',
+            flexDirection: 'row !important',
+            flexWrap: 'wrap',
+            width: '90%',
+            margin: 'auto',
+            marginTop: '5%',
+          }}
+        >
+          {currData?.map((item: NavigateDataProps, index = Date.now()) => {
+            return (
+              <Box key={index} className="mapBox">
+                <CardMedia
+                  className="mapImg"
+                  component="img"
+                  src={`http://image.tmdb.org/t/p/w500/${item?.poster_path}`}
+                />
+                <HoverCardPage
+                  Image={
+                    item?.backdrop_path === null
+                      ? errorImg
+                      : `http://image.tmdb.org/t/p/w500/${item?.backdrop_path}`
+                  }
+                  Genre={state.Genre}
+                  ReleaseDate={item?.release_date}
+                  Overview={item?.overview}
+                  NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
+                />
+              </Box>
+            );
+          })}
+        </Box>
+      )}
     </Box>
   );
 };

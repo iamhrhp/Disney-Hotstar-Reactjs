@@ -19,7 +19,7 @@ export const AddWatchLater = (payload: {
   Genre: string;
   url: string;
 }) => {
-  console.log('action', payload);
+  // console.log('action', payload);
   return {
     type: 'WATCH_LATER',
     payload: payload,
@@ -27,7 +27,7 @@ export const AddWatchLater = (payload: {
 };
 
 export const DeleteWatchLater = (payload: any) => {
-  console.log('action', payload);
+  // console.log('action', payload);
   return {
     type: 'DELETE_WATCH_LATER',
     payload: payload,

@@ -65,8 +65,8 @@ const SearchPage: FC<IProps> = (props: IProps) => {
       }
     }
   };
-  console.log('movies', movies);
-  console.log('currentMovies', currentMovies);
+  // console.log('movies', movies);
+  // console.log('currentMovies', currentMovies);
 
   useEffect(() => {
     setTimeout(() => {
