@@ -69,6 +69,7 @@ const SearchPage: FC<IProps> = (props: IProps) => {
   // console.log('currentMovies', currentMovies);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setTimeout(() => {
       SetIsLoading(true);
     }, 1000);
