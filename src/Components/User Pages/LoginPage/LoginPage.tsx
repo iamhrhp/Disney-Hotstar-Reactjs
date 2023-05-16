@@ -58,6 +58,7 @@ const LoginPage: FC<IProps> = (props: IProps) => {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setTimeout(() => {
       setIsLoading(true);
     }, 2000);

@@ -65,6 +65,10 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, []);
+
   let currData = state.tv === true ? tvSeries : movies;
 
   return (
@@ -72,7 +76,7 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
       sx={{
         backgroundColor: '#000000 !important',
         height: '100%',
-        marginBottom: '5%',
+        paddingBottom: '5%',
       }}
     >
       {!isLoading ? <LinearProgress /> : null}
