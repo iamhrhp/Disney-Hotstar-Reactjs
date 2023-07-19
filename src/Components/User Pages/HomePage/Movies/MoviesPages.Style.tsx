@@ -15,6 +15,9 @@ export const MoviesPagesStyle: any = (theme: any) => ({
     fontSize: '20px !important',
     textTransform: 'capitalize !important',
     color: '#ffffff !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px !important',
+    },
   },
   viewAllBtn: {
     marginRight: '25px',
@@ -25,6 +28,9 @@ export const MoviesPagesStyle: any = (theme: any) => ({
     color: '#8f98b2 !important',
     '&:hover': {
       color: '#ffffff !important',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px !important',
     },
   },
   titleLogoBox: {
