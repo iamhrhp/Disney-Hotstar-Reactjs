@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import FooterPage from '../../FooterPage/FooterPage';
+import CircularLoading from '../../Utils/CircularLoading/CircularLoading';
 
 interface IProps {
   classes?: any;
@@ -31,6 +32,8 @@ interface NavigateDataProps {
 
 const SearchPage: FC<IProps> = (props: IProps) => {
   const [isLoading, SetIsLoading] = useState<boolean>(false);
+  const [isLoading2, SetIsLoading2] = useState<boolean>(false);
+
   const [searchText, SetSearchText] = useState<string>('');
   const [currentMovies, setCurrentMovies] = useState<any[]>([]);
 
@@ -54,12 +57,14 @@ const SearchPage: FC<IProps> = (props: IProps) => {
   const handleSearch = async (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       // console.log(searchText);
+      SetIsLoading2(true);
       try {
         const res = await axios(
           `${baseURL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=1&include_adult=false`
         );
         const resJson = res.data;
         setCurrentMovies(resJson.results);
+        SetIsLoading2(false);
       } catch (e) {
         console.log(e);
       }
@@ -129,56 +134,72 @@ const SearchPage: FC<IProps> = (props: IProps) => {
           // display: state ? 'block' : 'none',
         }}
       >
-        Popular Searches
+        {currentMovies.length <= 0 ? 'Popular Searches' : null}
       </Typography>
-      <Box
-        sx={{
-          display: 'flex !important',
-          flexDirection: 'row !important',
-          flexWrap: 'wrap',
-          width: '90%',
-          margin: 'auto',
-          marginY: '5%',
-        }}
-      >
-        {currentMovies.length <= 0
-          ? movies.map((item: NavigateDataProps, index = Date.now()) => {
-              return (
-                <Box key={index} className="mapBox">
-                  <CardMedia
-                    className="mapImg"
-                    component="img"
-                    src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                  />
-                  <HoverCardPage
-                    Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                    // Genre={state.Genre}
-                    ReleaseDate={item?.release_date}
-                    Overview={item.overview}
-                    NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
-                  />
-                </Box>
-              );
-            })
-          : currentMovies.map((item: NavigateDataProps, index = Date.now()) => {
-              return (
-                <Box key={index} className="mapBox">
-                  <CardMedia
-                    className="mapImg"
-                    component="img"
-                    src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                  />
-                  <HoverCardPage
-                    Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
-                    // Genre={state.Genre}
-                    ReleaseDate={item?.release_date}
-                    Overview={item.overview}
-                    NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
-                  />
-                </Box>
-              );
-            })}
-      </Box>
+      {isLoading2 ? (
+        <Box
+          sx={{
+            width: '100%',
+            left: '100%',
+            // bottom: '100%',
+            position: 'absolute',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <CircularLoading />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            display: 'flex !important',
+            flexDirection: 'row !important',
+            flexWrap: 'wrap',
+            width: '90%',
+            margin: 'auto',
+            marginY: '5%',
+          }}
+        >
+          {currentMovies.length <= 0
+            ? movies.map((item: NavigateDataProps, index = Date.now()) => {
+                return (
+                  <Box key={index} className="mapBox">
+                    <CardMedia
+                      className="mapImg"
+                      component="img"
+                      src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                    />
+                    <HoverCardPage
+                      Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                      // Genre={state.Genre}
+                      ReleaseDate={item?.release_date}
+                      Overview={item.overview}
+                      NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
+                    />
+                  </Box>
+                );
+              })
+            : currentMovies.map(
+                (item: NavigateDataProps, index = Date.now()) => {
+                  return (
+                    <Box key={index} className="mapBox">
+                      <CardMedia
+                        className="mapImg"
+                        component="img"
+                        src={`http://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                      />
+                      <HoverCardPage
+                        Image={`http://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+                        // Genre={state.Genre}
+                        ReleaseDate={item?.release_date}
+                        Overview={item.overview}
+                        NavigateToMediaPlayer={() => handleNavigatePlayer(item)}
+                      />
+                    </Box>
+                  );
+                }
+              )}
+        </Box>
+      )}
       <FooterPage />
     </Box>
   );
