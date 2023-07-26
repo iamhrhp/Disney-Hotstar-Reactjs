@@ -64,7 +64,10 @@ const SearchPage: FC<IProps> = (props: IProps) => {
         );
         const resJson = res.data;
         setCurrentMovies(resJson.results);
-        SetIsLoading2(false);
+
+        setTimeout(() => {
+          SetIsLoading2(false);
+        }, 1000);
       } catch (e) {
         console.log(e);
       }
@@ -134,16 +137,19 @@ const SearchPage: FC<IProps> = (props: IProps) => {
           // display: state ? 'block' : 'none',
         }}
       >
-        {currentMovies.length <= 0 ? 'Popular Searches' : null}
+        {currentMovies.length <= 0
+          ? 'Popular Searches'
+          : `Search Keywords : ${searchText}`}
       </Typography>
       {isLoading2 ? (
         <Box
           sx={{
             width: '100%',
-            left: '100%',
-            // bottom: '100%',
-            position: 'absolute',
-            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            height: '100vh',
           }}
         >
           <CircularLoading />
