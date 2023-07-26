@@ -75,7 +75,41 @@ img {
   transition: all 0.2s ease-in-out;
 }
 
-.sliderBox:hover .sliderImg {
-  display: none;
+/* .sliderBox:first-child:hover .hoverCard {
+  right: -150px;
+  display: block;
+  transition: all 0.2s ease-in-out;
+} */
+
+.swiper-slide:first-child:hover .hoverCard {
+  right: -80% !important;
+  display: block;
   transition: all 0.2s ease-in-out;
 }
+
+.swiper-slide:nth-child(6):hover .hoverCard {
+  left: -80% !important;
+  display: block;
+  transition: all 0.2s ease-in-out;
+}
+
+/* .sliderBox:first-child:hover .hoverCard {
+  right: -150px;
+  display: block;
+  transition: all 0.2s ease-in-out;
+} */
+
+/* .sliderBox:last-child:hover .hoverCard {
+  left: -150px;
+  display: block;
+  transition: all 0.2s ease-in-out;
+} */
+
+/* .sliderBox:nth-child(6):hover {
+  left: -270px;
+} */
+
+/* .sliderBox:hover .sliderImg {
+  display: none;
+  transition: all 0.2s ease-in-out;
+} */
