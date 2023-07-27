@@ -10,6 +10,9 @@ export const FooterPageStyle: any = (theme: any) => ({
     textTransform: 'capitalize !important',
     color: '#ffffff !important',
     marginBottom: '10px !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px !important',
+    },
   },
   footerList: {
     fontFamily: '"Inter",sans-serif !important',
@@ -17,6 +20,9 @@ export const FooterPageStyle: any = (theme: any) => ({
     fontWeight: '400',
     fontSize: '14px !important',
     marginBottom: '10px !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px !important',
+    },
   },
   footerList1: {
     fontFamily: '"Inter",sans-serif !important',
@@ -26,6 +32,7 @@ export const FooterPageStyle: any = (theme: any) => ({
     marginBottom: '10px !important',
     [theme.breakpoints.down('sm')]: {
       marginRight: '10px !important',
+      fontSize: '12px !important',
     },
   },
   footerList2: {
@@ -33,6 +40,9 @@ export const FooterPageStyle: any = (theme: any) => ({
     color: '#8f98b2 !important',
     fontWeight: '400',
     fontSize: '14px !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px !important',
+    },
   },
   gridWrapper: {
     width: '95%',
@@ -87,12 +97,18 @@ export const FooterPageStyle: any = (theme: any) => ({
     fontSize: '12px !important',
     textTransform: 'capitalize !important',
     color: '#8f98b2 !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '10px !important',
+    },
   },
   termsofUse: {
     fontFamily: '"Inter",sans-serif !important',
     color: '#8f98b2 !important',
     fontSize: '12px',
     textTransform: 'capitalize !important',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '10px !important',
+    },
   },
   appDownload: {
     display: 'flex',

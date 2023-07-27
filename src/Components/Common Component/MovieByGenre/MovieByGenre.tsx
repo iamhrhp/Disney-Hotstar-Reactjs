@@ -125,6 +125,8 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
         navigation={true}
         modules={[Navigation]}
         className="mySwiper"
+        // slidesOffsetAfter={100}
+        // slidesOffsetBefore={100}
       >
         {currData?.map((item: any, index = Date.now()) => {
           // console.log('---movie----', item);
