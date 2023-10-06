@@ -3,12 +3,11 @@ import { FC, useState, useEffect } from 'react';
 import LinearProgress from '@mui/material/LinearProgress';
 import HoverCardPage from '../../Common Component/Hover Card/HoverCardPage';
 import { useSelector } from 'react-redux';
-import { baseURL } from '../../../api';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import FooterPage from '../../FooterPage/FooterPage';
-import CircularLoading from '../../Utils/CircularLoading/CircularLoading';
+import CircularLoading from '../../../Utils/CircularLoading/CircularLoading';
 
 interface IProps {
   classes?: any;
@@ -44,7 +43,7 @@ const SearchPage: FC<IProps> = (props: IProps) => {
     let videoKey;
     try {
       const res = await axios(
-        `${baseURL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
+        `${process.env.REACT_APP_API_URL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
       );
       const resJson = res.data;
       videoKey = resJson.results[0].key;
@@ -60,7 +59,7 @@ const SearchPage: FC<IProps> = (props: IProps) => {
       SetIsLoading2(true);
       try {
         const res = await axios(
-          `${baseURL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=1&include_adult=false`
+          `${process.env.REACT_APP_API_URL}/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=1&include_adult=false`
         );
         const resJson = res.data;
         setCurrentMovies(resJson.results);

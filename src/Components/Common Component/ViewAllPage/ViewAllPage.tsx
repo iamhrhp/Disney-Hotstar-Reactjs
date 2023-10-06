@@ -2,14 +2,13 @@ import { FC, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Box, CardMedia, Typography } from '@mui/material';
 import HoverCardPage from '../Hover Card/HoverCardPage';
-import { baseURL } from '../../../api';
 import axios from 'axios';
 import './ViewAllPage.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { useSelector } from 'react-redux';
 
 import errorImg from '../../../images/404/404.jpg';
-import CircularLoading from '../../Utils/CircularLoading/CircularLoading';
+import CircularLoading from '../../../Utils/CircularLoading/CircularLoading';
 
 interface IProps {
   classes?: any;
@@ -49,7 +48,7 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
     let videoKey;
     try {
       const res = await axios(
-        `${baseURL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
+        `${process.env.REACT_APP_API_URL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
       );
       const resJson = res.data;
       videoKey = resJson.results[0].key;
@@ -96,7 +95,6 @@ const ViewAllPage: FC<IProps> = (props: IProps) => {
       >
         {state.Genre} {state.tv === true ? 'Shows' : 'Movies'}
       </Typography>
-
       {!isLoading ? (
         <Box
           sx={{

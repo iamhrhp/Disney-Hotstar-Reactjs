@@ -16,5 +16,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "wwwroot/js/**/*.ts", "wwwroot/js/**/*.tsx"]
+  "include": [
+    "src",
+    "wwwroot/js/**/*.ts",
+    "wwwroot/js/**/*.tsx",
+    "webpack.config.js"
+  ]
 }

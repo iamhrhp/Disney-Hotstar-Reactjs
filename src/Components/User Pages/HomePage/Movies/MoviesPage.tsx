@@ -3,7 +3,7 @@ import { MoviesPagesStyle } from './MoviesPages.Style';
 import MovieByGenre from '../../../Common Component/MovieByGenre/MovieByGenre';
 import { useEffect, FC, useState } from 'react';
 import { Box } from '@mui/material';
-import CircularLoading from '../../../Utils/CircularLoading/CircularLoading';
+import CircularLoading from '../../../../Utils/CircularLoading/CircularLoading';
 
 interface IProps {
   classes?: any;

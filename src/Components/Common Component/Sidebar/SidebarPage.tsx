@@ -4,7 +4,7 @@ import { SidebarData } from '../../Data/Sidebar/SidebarData';
 import './SideBarPage.css';
 import { withStyles } from '@mui/styles';
 import { SidebarPageStyles } from './SidebarPage.Style';
-import { withRouter } from '../../Utils/WithRouter';
+import { withRouter } from '../../../Utils/WithRouter';
 
 interface IProps {
   children: React.ReactNode;

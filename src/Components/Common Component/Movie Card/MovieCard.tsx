@@ -4,11 +4,11 @@ import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import AddIcon from '@mui/icons-material/Add';
 import { withStyles } from '@mui/styles';
 import { MovieCardStyles } from './MovieCard.Styles';
-import { withRouter } from '../../Utils/WithRouter';
+import { withRouter } from '../../../Utils/WithRouter';
 import DoneIcon from '@mui/icons-material/Done';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { WATCH_LATER } from '../../Utils/redux/reducer/reducer';
+import { WATCH_LATER } from '../../../Utils/redux/reducer/reducer';
 import toast, { Toaster } from 'react-hot-toast';
 
 interface IProps {

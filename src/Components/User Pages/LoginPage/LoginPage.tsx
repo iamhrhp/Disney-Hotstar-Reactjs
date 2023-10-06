@@ -10,7 +10,7 @@ import React, { FC, useState, useEffect } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { withStyles } from '@mui/styles';
 import { LoginPageStyle } from './LoginPage.Style';
-import { auth } from '../../Utils/firebase/firebaseConfig';
+import { auth } from '../../../Utils/firebase/firebaseConfig';
 import toast, { Toaster } from 'react-hot-toast';
 import {
   PhoneAuthProvider,
@@ -31,7 +31,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {
   ADD_USER_NUMBER,
   DELETE_USER_NUMBER,
-} from '../../Utils/redux/reducer/reducer';
+} from '../../../Utils/redux/reducer/reducer';
 
 interface IProps {
   classes?: any;

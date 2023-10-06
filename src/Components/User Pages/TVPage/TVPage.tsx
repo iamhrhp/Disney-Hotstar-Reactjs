@@ -7,7 +7,7 @@ import { withStyles } from '@mui/styles';
 import { TVPageStyle } from './TVPage.Style';
 import { Carousel } from 'react-responsive-carousel';
 import { useDispatch } from 'react-redux';
-import { DELETE_WATCH_LATER } from '../../Utils/redux/reducer/reducer';
+import { DELETE_WATCH_LATER } from '../../../Utils/redux/reducer/reducer';
 
 interface IProps {
   classes: any;

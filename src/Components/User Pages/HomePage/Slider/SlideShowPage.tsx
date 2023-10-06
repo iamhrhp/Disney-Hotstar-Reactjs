@@ -9,7 +9,7 @@ import MovieCard from '../../../Common Component/Movie Card/MovieCard';
 import { MovieDetails } from '../../../Data/MovieDetails/MovieDetails';
 import LinearProgress from '@mui/material/LinearProgress';
 import { connect } from 'react-redux';
-import { DELETE_WATCH_LATER } from '../../../Utils/redux/reducer/reducer';
+import { DELETE_WATCH_LATER } from '../../../../Utils/redux/reducer/reducer';
 import { Toaster } from 'react-hot-toast';
 
 interface IProps {

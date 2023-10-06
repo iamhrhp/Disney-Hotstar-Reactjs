@@ -1,8 +1,8 @@
 import { Provider } from 'react-redux';
 import './App.css';
-import RoutesPageMain from './Components/Routes/RoutesPageMain';
+import RoutesPageMain from './Routes/RoutesPageMain';
 import { ThemeProvider, createTheme } from '@mui/material';
-import { store } from './Components/Utils/redux/store/store';
+import { store } from './Utils/redux/store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 

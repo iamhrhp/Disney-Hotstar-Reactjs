@@ -47,6 +47,7 @@ const moviesSlice: any = createSlice({
 });
 
 const { actions, reducer } = moviesSlice;
+
 export const {
   ADD_MOVIES,
   ADD_TV,
@@ -55,4 +56,5 @@ export const {
   ADD_USER_NUMBER,
   DELETE_USER_NUMBER,
 } = actions;
+
 export default reducer;

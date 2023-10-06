@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { withRouter } from '../../Utils/WithRouter';
+import { withRouter } from '../../../Utils/WithRouter';
 import { Box } from '@mui/material';
 import './MoviePlayer.css';
 

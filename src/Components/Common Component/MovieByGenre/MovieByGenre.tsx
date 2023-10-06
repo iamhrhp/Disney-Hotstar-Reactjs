@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
-import { baseURL } from '../../../api';
 import axios from 'axios';
 import './MovieByGenre.css';
 import { withStyles } from '@mui/styles';
@@ -14,7 +13,7 @@ import { moviesGenreId } from '../../Data/MoviesGenreId';
 import { useNavigate } from 'react-router-dom';
 import HoverCardPage from '../Hover Card/HoverCardPage';
 import { useDispatch } from 'react-redux';
-import { ADD_MOVIES, ADD_TV } from '../../Utils/redux/reducer/reducer';
+import { ADD_MOVIES, ADD_TV } from '../../../Utils/redux/reducer/reducer';
 import errorImg from '../../../images/404/404.jpg';
 
 interface IProps {
@@ -31,44 +30,37 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const { movies, tvSeries } = useSelector((state: any) => state.moviesSlice);
-
-  // console.log('movies', movies);
-  // console.log('tvSeries', tvSeries);
-  // console.log('currData', currData);
-
-  // const test = useSelector((state: any) => state);
-  // console.log('test movieBygenre', test);
-
   //converting props genre to api genre id
   const movieId = moviesGenreId
     .filter((item) => {
-      if (item.title === Genre) {
+      if (item?.title === Genre) {
         return item.id;
       }
     })
-    .map((item) => item.id);
+    .map((item) => item?.id);
 
   const tvId = moviesGenreId
     .filter((item) => {
-      if (item.title === Genre) {
-        return item.id;
+      if (item?.title === Genre) {
+        return item?.id;
       }
     })
-    .map((item) => item.id);
+    .map((item) => item?.id);
 
   //api call for getting popular movies data
   const getMovieData = async () => {
     try {
       const res = await axios(
-        `${baseURL}/3/discover/${tv ? 'tv' : 'movie'}?api_key=${
+        `${process.env.REACT_APP_API_URL}/3/discover/${
+          tv ? 'tv' : 'movie'
+        }?api_key=${
           process.env.REACT_APP_API_KEY
         }&language=en-US&sort_by=popularity.desc&page=1&include_video=true&with_genres=${
           tv ? tvId : movieId
         }`
       );
       const resJson = await res.data;
-      setCurrData(resJson.results);
+      setCurrData(resJson?.results);
       // console.log('resJson', resJson.results);
     } catch (e) {
       console.log('e', e);
@@ -76,11 +68,6 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   };
 
   const navigateToViewAllPage = () => {
-    // if (tvSeries.length <= 0 && tv === true) {
-    //   dispatch(ADD_TV(currData));
-    // } else if (movies.length <= 0 && !tv) {
-    //   dispatch(ADD_MOVIES(currData));
-    // }
     if (tv === true) {
       dispatch(ADD_TV(currData));
     } else if (!tv) {
@@ -94,7 +81,7 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
     let videoKey;
     try {
       const res = await axios(
-        `${baseURL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
+        `${process.env.REACT_APP_API_URL}/3/movie/${movieData.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&type=trailer`
       );
       const resJson = res.data;
       videoKey = resJson.results[0].key;
@@ -107,6 +94,8 @@ const MovieByGenre: FC<IProps> = (props: IProps) => {
   useEffect(() => {
     getMovieData();
   }, []);
+
+  // console.log('--process', process.env);
 
   return (
     <Box className={classes.mainBoxMBG}>
